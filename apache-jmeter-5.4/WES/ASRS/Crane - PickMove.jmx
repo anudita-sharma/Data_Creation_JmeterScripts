@@ -1,0 +1,1496 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.0 r1840935">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">true</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="inventoryQuantity" elementType="Argument">
+            <stringProp name="Argument.name">inventoryQuantity</stringProp>
+            <stringProp name="Argument.value">1.0</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="maxTimeOut" elementType="Argument">
+            <stringProp name="Argument.name">maxTimeOut</stringProp>
+            <stringProp name="Argument.value">3600</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="caseLoop" elementType="Argument">
+            <stringProp name="Argument.name">caseLoop</stringProp>
+            <stringProp name="Argument.value">1</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+            <stringProp name="Argument.desc">7216 cases&amp;Inventory</stringProp>
+          </elementProp>
+          <elementProp name="containerLPN" elementType="Argument">
+            <stringProp name="Argument.name">containerLPN</stringProp>
+            <stringProp name="Argument.value">cslpn_${__time()}.csv</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="time" elementType="Argument">
+            <stringProp name="Argument.name">time</stringProp>
+            <stringProp name="Argument.value">${__time()}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="Uom" elementType="Argument">
+            <stringProp name="Argument.name">Uom</stringProp>
+            <stringProp name="Argument.value">Case</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="itemsPerPallet" elementType="Argument">
+            <stringProp name="Argument.name">itemsPerPallet</stringProp>
+            <stringProp name="Argument.value">2</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="STX" elementType="Argument">
+            <stringProp name="Argument.name">STX</stringProp>
+            <stringProp name="Argument.value">%02</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="ETX" elementType="Argument">
+            <stringProp name="Argument.name">ETX</stringProp>
+            <stringProp name="Argument.value">%03</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="clpn" elementType="Argument">
+            <stringProp name="Argument.name">clpn</stringProp>
+            <stringProp name="Argument.value">LPN${__time()}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="startTime" elementType="Argument">
+            <stringProp name="Argument.name">startTime</stringProp>
+            <stringProp name="Argument.value">${__time(MM/dd/yyyy_HH:mm:sszzz)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+        <collectionProp name="HeaderManager.headers">
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">Accept</stringProp>
+            <stringProp name="Header.value">*/*</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">Content-Type</stringProp>
+            <stringProp name="Header.value">application/json</stringProp>
+          </elementProp>
+        </collectionProp>
+      </HeaderManager>
+      <hashTree/>
+      <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration - VPT - ${__P(hostDB)}" enabled="true">
+        <boolProp name="autocommit">true</boolProp>
+        <stringProp name="checkQuery">Select 1</stringProp>
+        <stringProp name="connectionAge">5000</stringProp>
+        <stringProp name="dataSource">SQLDatabase</stringProp>
+        <stringProp name="dbUrl">jdbc:mysql://${__P(hostDB)}:3306/</stringProp>
+        <stringProp name="driver">com.mysql.jdbc.Driver</stringProp>
+        <boolProp name="keepAlive">true</boolProp>
+        <stringProp name="password">admin123</stringProp>
+        <stringProp name="poolMax">10</stringProp>
+        <stringProp name="timeout">10000</stringProp>
+        <stringProp name="transactionIsolation">DEFAULT</stringProp>
+        <stringProp name="trimInterval">60000</stringProp>
+        <stringProp name="username">${__P(hostDBUsr)}</stringProp>
+        <stringProp name="initQuery"></stringProp>
+        <boolProp name="preinit">false</boolProp>
+        <stringProp name="connectionProperties"></stringProp>
+      </JDBCDataSource>
+      <hashTree/>
+      <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+        <stringProp name="scriptLanguage">groovy</stringProp>
+        <stringProp name="parameters"></stringProp>
+        <stringProp name="filename"></stringProp>
+        <stringProp name="cacheKey">true</stringProp>
+        <stringProp name="script">def properties = new Properties()
+def stream = new FileInputStream(&quot;smVPTk8.properties&quot;)
+try {
+  props.load(stream)
+} finally {
+  stream.close()
+}
+properties.each{ prop,val -&gt;
+                print(&quot;Property::&quot;+ prop + &quot;::&quot;)
+                print(&quot;Value::&quot;+ val)
+                println(&quot;========================&quot;)
+                System.setProperty(prop, val)
+}
+
+props.put(&quot;startDateTime&quot;,&quot;${__time(MM/dd/yyyy HH:mm:ss zzz)}&quot;);</stringProp>
+      </JSR223PreProcessor>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group - Data creation" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop : create_Case_Inventory" enabled="true">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="LoopController.loops">${caseLoop}</stringProp>
+        </LoopController>
+        <hashTree>
+          <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
+            <stringProp name="CounterConfig.start">1</stringProp>
+            <stringProp name="CounterConfig.end"></stringProp>
+            <stringProp name="CounterConfig.incr">1</stringProp>
+            <stringProp name="CounterConfig.name">caseCount</stringProp>
+            <stringProp name="CounterConfig.format"></stringProp>
+            <boolProp name="CounterConfig.per_user">false</boolProp>
+          </CounterConfig>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create Case" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;ContainerTypeId&quot;: {&#xd;
+    &quot;ContainerTypeId&quot;: &quot;SHUTTLE_iLPN&quot;&#xd;
+  },&#xd;
+  &quot;LocationAlias&quot;: &quot;SYSTEMRESERVED&quot;,&#xd;
+  &quot;ContainerLpn&quot;: [&#xd;
+    {&#xd;
+      &quot;Lpn&quot;: &quot;${clpn}${caseCount}&quot;,&#xd;
+      &quot;IsPrimaryLpn&quot;: &quot;true&quot;,&#xd;
+      &quot;Orientation&quot;:0&#xd;
+    }&#xd;
+  ],&#xd;
+  &quot;MeasuredDimension&quot;: {&#xd;
+    &quot;Height&quot;: 10,&#xd;
+    &quot;Length&quot;: ${cLength},&#xd;
+    &quot;UOM&quot;: {&#xd;
+      &quot;Code&quot;: &quot;mm&quot;&#xd;
+    },&#xd;
+    &quot;Width&quot;: ${cWidth}&#xd;
+  },&#xd;
+  &quot;MeasuredWeight&quot;:10.0,&#xd;
+  &quot;ContainerHi&quot;: 1,&#xd;
+  &quot;ContainerTi&quot;: 2&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${__P(hostServer)}</stringProp>
+            <stringProp name="HTTPSampler.port">${__P(hostPort_container)}</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/api/container/container/createContainerWithHeirarchy</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="ContainerId Extraction" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">ContainerId</stringProp>
+              <stringProp name="RegexExtractor.regex">&quot;ContainerId&quot;:&quot;(.*?)&quot;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">Not Found</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Container LPN Extraction" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">ctlpn</stringProp>
+              <stringProp name="RegexExtractor.regex">&quot;Lpn&quot;:&quot;(.*?)&quot;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">Not Found</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+          </hashTree>
+          <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Once Only Controller" enabled="true"/>
+          <hashTree>
+            <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC-Get Empty Location Alias" enabled="true">
+              <stringProp name="dataSource">SQLDatabase</stringProp>
+              <stringProp name="query">Select LOCATION_ID from location.LOC_LOCATION where IS_EMPTY =&apos;1&apos; and IS_ONLINE =&apos;1&apos; and IS_PUT_ENABLED=&apos;1&apos; and Area=&apos;C1-STO&apos; and LOCATION_TYPE=&apos;STO&apos; and Alias like &apos;%01C1SH%&apos; and lock_reason_code is NULL and AISLE in (&apos;SH01&apos;,&apos;SH02&apos;,&apos;SH03&apos;) and level in (&apos;001&apos;,&apos;002&apos;,&apos;003&apos;,&apos;004&apos;) and depth=&apos;00&apos; LIMIT ${caseLoop}
+</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultVariable">locId</stringProp>
+              <stringProp name="variableNames">locId</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+            </JDBCSampler>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Update location of a container" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&quot;LocationId&quot;:&quot;${locId_1}&quot;}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${__P(hostServer)}</stringProp>
+            <stringProp name="HTTPSampler.port">${__P(hostPort_container)}</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">api/container/container/containerId/${ContainerId}</stringProp>
+            <stringProp name="HTTPSampler.method">PUT</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <JDBCPostProcessor guiclass="TestBeanGUI" testclass="JDBCPostProcessor" testname="JDBC PostProcessor" enabled="false">
+              <stringProp name="dataSource">SQLDatabase</stringProp>
+              <stringProp name="query">Update location.LOC_LOCATION Set IS_EMPTY =&apos;0&apos; where LOCATION_ID=&apos;${locId_1}&apos;</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Update Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultVariable">dummy</stringProp>
+              <stringProp name="variableNames">dumm</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+            </JDBCPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Request" enabled="true">
+            <stringProp name="dataSource">SQLDatabase</stringProp>
+            <stringProp name="queryType">Update Statement</stringProp>
+            <stringProp name="query">Update location.LOC_LOCATION Set IS_EMPTY =&apos;0&apos; where LOCATION_ID=&apos;${locId_1}&apos;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="variableNames">dummy</stringProp>
+            <stringProp name="resultVariable">dummy</stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC-Get Container ID and LPN" enabled="true">
+            <stringProp name="dataSource">SQLDatabase</stringProp>
+            <stringProp name="query">select LPN from container.CON_CONTAINER_LPN where LPN like &apos;${clpn}%&apos; order by created_timestamp asc LIMIT ${caseLoop}</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+            <stringProp name="resultVariable">containerLPN,locationId</stringProp>
+            <stringProp name="variableNames">containerLpn</stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller :: pickMove" enabled="true">
+            <boolProp name="LoopController.continue_forever">true</boolProp>
+            <stringProp name="LoopController.loops">${containerLpn_#}</stringProp>
+          </LoopController>
+          <hashTree>
+            <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
+              <stringProp name="CounterConfig.start">1</stringProp>
+              <stringProp name="CounterConfig.end"></stringProp>
+              <stringProp name="CounterConfig.incr">1</stringProp>
+              <stringProp name="CounterConfig.name">count</stringProp>
+              <stringProp name="CounterConfig.format"></stringProp>
+              <boolProp name="CounterConfig.per_user">false</boolProp>
+            </CounterConfig>
+            <hashTree/>
+            <com.zeroclue.jmeter.protocol.amqp.AMQPPublisher guiclass="com.zeroclue.jmeter.protocol.amqp.gui.AMQPPublisherGui" testclass="com.zeroclue.jmeter.protocol.amqp.AMQPPublisher" testname="createPickMove" enabled="true">
+              <stringProp name="AMQPSampler.Exchange">ASRSCLIENT_EXCHANGE</stringProp>
+              <boolProp name="AMQPSampler.ExchangeDurable">true</boolProp>
+              <boolProp name="AMQPSampler.ExchangeAutoDelete">false</boolProp>
+              <boolProp name="AMQPSampler.ExchangeRedeclare">false</boolProp>
+              <stringProp name="AMQPSampler.Queue"></stringProp>
+              <stringProp name="AMQPSampler.RoutingKey">asrsclient.create_pickmove</stringProp>
+              <stringProp name="AMQPSampler.VirtualHost">/</stringProp>
+              <stringProp name="AMQPSampler.MessageTTL"></stringProp>
+              <stringProp name="AMQPSampler.MessageExpires"></stringProp>
+              <stringProp name="AMQPSampler.ExchangeType">direct</stringProp>
+              <stringProp name="AMQPSampler.QueueDurable">true</stringProp>
+              <stringProp name="AMQPSampler.QueueExclusive">false</stringProp>
+              <stringProp name="AMQPSampler.QueueAutoDelete">false</stringProp>
+              <boolProp name="AMQPSampler.Redeclare">false</boolProp>
+              <stringProp name="AMQPSampler.Timeout">1000</stringProp>
+              <stringProp name="AMQPSampler.Iterations">1</stringProp>
+              <stringProp name="AMQPSampler.Host">10.195.89.83</stringProp>
+              <stringProp name="AMQPSampler.Port">5672</stringProp>
+              <stringProp name="AMQPSampler.Username">guest</stringProp>
+              <stringProp name="AMQPSampler.Password">guest</stringProp>
+              <stringProp name="AMQPSampler.SSL">false</stringProp>
+              <boolProp name="AMQPPublisher.Persistent">false</boolProp>
+              <boolProp name="AMQPPublisher.UseTx">false</boolProp>
+              <stringProp name="AMQPPublisher.MessageRoutingKey">asrsclient.create_pickmove</stringProp>
+              <stringProp name="AMQPPublisher.Message">{&quot;SourceLpn&quot;:&quot;${__V(containerLpn_${__V(count)})}&quot;,&quot;SourceLocation&quot;:&quot;${__V(locId_${__V(count)})}&quot;}</stringProp>
+              <stringProp name="AMQPPublisher.MessageType"></stringProp>
+              <stringProp name="AMQPPublisher.ReplyToQueue"></stringProp>
+              <stringProp name="AMQPPublisher.CorrelationId"></stringProp>
+              <stringProp name="AMQPPublisher.ContentType"></stringProp>
+              <stringProp name="AMQPPublisher.MessageId"></stringProp>
+              <elementProp name="AMQPPublisher.Headers" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+            </com.zeroclue.jmeter.protocol.amqp.AMQPPublisher>
+            <hashTree>
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="script">TimeZone.setDefault(TimeZone.getTimeZone(&apos;UTC&apos;))
+def now = new Date()
+println now.format(&quot;yyyy-mm-dd HH:mm:ss.000&quot;)
+//println now
+
+File file = new File(&quot;createPickMoveTimings_${__time(MMddHHmmss)}.csv&quot;)
+file.append(vars.get(&quot;ContainerId&quot;+&quot;_&quot;+vars.get(&quot;count&quot;)))
+file.append(&quot;,&quot;)
+file.append(now.format(&quot;yyyy-mm-dd HH:mm:ss.SSS&quot;))
+file.append(&quot;\n&quot;)</stringProp>
+                <stringProp name="scriptLanguage">groovy</stringProp>
+              </JSR223PostProcessor>
+              <hashTree/>
+            </hashTree>
+            <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC- move step updated timestamp" enabled="true">
+              <stringProp name="dataSource">SQLDatabase</stringProp>
+              <stringProp name="query">SELECT UPDATED_TIMESTAMP FROM asrsmanager.ASM_MOVE_STEP WHERE CONTAINER_LPN=&apos;${__V(containerLpn_${__V(count)})}&apos; </stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultVariable">updtTime</stringProp>
+              <stringProp name="variableNames">updtTime</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+            </JDBCSampler>
+            <hashTree>
+              <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">sleep(1000);</stringProp>
+              </JSR223PreProcessor>
+              <hashTree/>
+            </hashTree>
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="createPickMove" enabled="false">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.Channel;
+ 
+log.info(&quot;===createPickMove====&quot;);
+ConnectionFactory factory = new ConnectionFactory();
+factory.setHost(&quot;${__P(hostRMQ)}&quot;);
+factory.setUsername(&quot;guest&quot;);
+factory.setPassword(&quot;guest&quot;);
+factory.setVirtualHost(&quot;/&quot;);
+factory.setPort(5672);
+Connection connection = null;
+Channel channel = null;
+ try{
+    connection = factory.newConnection();
+    channel = connection.createChannel();
+ String message = &quot;{\&quot;SourceLpn\&quot;:\&quot;&quot;+vars.get(&quot;containerLpn&quot;+&quot;_&quot;+vars.get(&quot;count&quot;))+&quot;\&quot;,\&quot;SourceLocation\&quot;: \&quot;&quot;+vars.get(&quot;locId_1&quot;+&quot;_&quot;+vars.get(&quot;count&quot;))\&quot;}&quot;;
+
+log.info(message);
+  
+ channel.basicPublish(&quot;ASRSCLIENT_EXCHANGE&quot;, &quot;asrsclient.create_pickmove&quot;, null, message.getBytes());
+ }
+  catch(Exception e){log.info(&quot;Exception while publishing RMQ event&quot;);}
+finally{
+    channel.close();
+    connection.close();
+}</stringProp>
+            </JSR223Sampler>
+            <hashTree>
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="script">TimeZone.setDefault(TimeZone.getTimeZone(&apos;UTC&apos;))
+def now = new Date()
+println now.format(&quot;yyyy-mm-dd HH:mm:ss.000&quot;)
+//println now
+
+File file = new File(&quot;pmtimings_${__time(MMddHHmmss)}.csv&quot;)
+file.append(vars.get(&quot;containerId&quot;+&quot;_&quot;+vars.get(&quot;count&quot;)))
+file.append(&quot;,&quot;)
+file.append(now.format(&quot;yyyy-mm-dd HH:mm:ss.SSS&quot;))
+file.append(&quot;\n&quot;)</stringProp>
+                <stringProp name="scriptLanguage">groovy</stringProp>
+              </JSR223PostProcessor>
+              <hashTree/>
+            </hashTree>
+            <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC-Get details from Move_Step" enabled="true">
+              <stringProp name="dataSource">SQLDatabase</stringProp>
+              <stringProp name="query">select MOVE_TASK_ID,DEVICE_ID,STEP_NUMBER,SPUR_ID,CONTAINER_LPN from asrsmanager.ASM_MOVE_STEP where CONTAINER_LPN like &apos;${__V(containerLpn_${__V(count)})}&apos;</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultVariable">moveTaskId,deviceId,stepNum,spurId,containerLPN</stringProp>
+              <stringProp name="variableNames">moveTaskId,deviceId,stepNum,spurId,containerLPN</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+            </JDBCSampler>
+            <hashTree>
+              <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">sleep(5000);</stringProp>
+              </JSR223PreProcessor>
+              <hashTree/>
+            </hashTree>
+            <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller" enabled="true">
+              <stringProp name="IfController.condition">${__jexl3(${moveTaskId_#}&gt;0)}</stringProp>
+              <boolProp name="IfController.evaluateAll">false</boolProp>
+              <boolProp name="IfController.useExpression">true</boolProp>
+            </IfController>
+            <hashTree>
+              <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC-Task created status - To Influx" enabled="true">
+                <stringProp name="dataSource">SQLDatabase</stringProp>
+                <stringProp name="query">select MOVE_TASK_STATUS from asrsmanager.ASM_MOVE_TASK where CONTAINER_ID like &apos;${__V(containerId_${__V(count)})}&apos;</stringProp>
+                <stringProp name="queryArguments"></stringProp>
+                <stringProp name="queryArgumentsTypes"></stringProp>
+                <stringProp name="queryTimeout"></stringProp>
+                <stringProp name="queryType">Select Statement</stringProp>
+                <stringProp name="resultSetHandler">Store as String</stringProp>
+                <stringProp name="resultVariable">msCrStatus</stringProp>
+                <stringProp name="variableNames">msCrStatus</stringProp>
+                <stringProp name="resultSetMaxRows"></stringProp>
+              </JDBCSampler>
+              <hashTree/>
+              <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="sendReserveSpurMessage" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.Channel;
+ 
+log.info(&quot;===sendReserveSpurMessage====&quot;);
+ConnectionFactory factory = new ConnectionFactory();
+factory.setHost(&quot;${__P(hostRMQ)}&quot;);
+factory.setUsername(&quot;guest&quot;);
+    factory.setPassword(&quot;guest&quot;);
+    factory.setVirtualHost(&quot;/&quot;);
+    factory.setPort(5672);
+Connection connection = null;
+Channel channel = null;
+ try{
+    connection = factory.newConnection();
+    channel = connection.createChannel();
+ String message = &quot;{\n&quot;+
+&quot;\&quot;DeviceId\&quot;:\&quot;&quot;+vars.get(&quot;spurId_1&quot;)+&quot;\&quot;,\n&quot;+
+&quot;\&quot;SpurStatus\&quot;:\&quot;RESERVED\&quot;,\n&quot;+
+&quot;\&quot;ContainerLpn\&quot;:\&quot;&quot;+vars.get(&quot;containerLPN_1&quot;)+&quot;\&quot;\n&quot;+
+&quot;}&quot;;
+ 
+  log.info(&quot;================Reserve Spur=========&quot;+message);
+  
+ channel.basicPublish(&quot;DEVICE_COMM_EXCHANGE&quot;, &quot;${spurId_1}.spurstatus&quot;, null, message.getBytes());
+}
+  catch(Exception e){log.info(&quot;Exception while publishing RMQ event&quot;);}
+finally{
+    channel.close();
+    connection.close();
+}</stringProp>
+              </JSR223Sampler>
+              <hashTree>
+                <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+                  <stringProp name="cacheKey">true</stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="script">TimeZone.setDefault(TimeZone.getTimeZone(&apos;UTC&apos;))
+def now = new Date()
+println now.format(&quot;yyyy-mm-dd HH:mm:ss.000&quot;)
+//println now
+
+File file = new File(&quot;reserveSpurTimings_${__time(MMddHHmmss)}.csv&quot;)
+file.append(vars.get(&quot;ContainerId&quot;+&quot;_&quot;+vars.get(&quot;count&quot;)))
+file.append(&quot;,&quot;)
+file.append(now.format(&quot;yyyy-mm-dd HH:mm:ss.SSS&quot;))
+file.append(&quot;\n&quot;)</stringProp>
+                  <stringProp name="scriptLanguage">groovy</stringProp>
+                </JSR223PostProcessor>
+                <hashTree/>
+              </hashTree>
+              <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC- move step updated timestamp" enabled="true">
+                <stringProp name="dataSource">SQLDatabase</stringProp>
+                <stringProp name="query">SELECT UPDATED_TIMESTAMP FROM asrsmanager.ASM_MOVE_STEP WHERE CONTAINER_LPN=&apos;${__V(containerLpn_${__V(count)})}&apos;</stringProp>
+                <stringProp name="queryArguments"></stringProp>
+                <stringProp name="queryArgumentsTypes"></stringProp>
+                <stringProp name="queryTimeout"></stringProp>
+                <stringProp name="queryType">Select Statement</stringProp>
+                <stringProp name="resultSetHandler">Store as String</stringProp>
+                <stringProp name="resultVariable">updtTime</stringProp>
+                <stringProp name="variableNames">updtTime</stringProp>
+                <stringProp name="resultSetMaxRows"></stringProp>
+              </JDBCSampler>
+              <hashTree>
+                <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+                  <stringProp name="scriptLanguage">groovy</stringProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="cacheKey">true</stringProp>
+                  <stringProp name="script">sleep(10000);</stringProp>
+                </JSR223PreProcessor>
+                <hashTree/>
+              </hashTree>
+              <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="commandSentAtShuttle" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.Channel;
+ 
+log.info(&quot;===commandSentAtShuttle====&quot;);
+ConnectionFactory factory = new ConnectionFactory();
+factory.setHost(&quot;${__P(hostRMQ)}&quot;);
+factory.setUsername(&quot;guest&quot;);
+    factory.setPassword(&quot;guest&quot;);
+    factory.setVirtualHost(&quot;/&quot;);
+    factory.setPort(5672);
+Connection connection = null;
+Channel channel = null;
+ try{
+    connection = factory.newConnection();
+    channel = connection.createChannel();
+ String message = &quot;{\n&quot;+
+&quot;\&quot;MoveTaskId\&quot;:\&quot;&quot;+vars.get(&quot;moveTaskId_1&quot;)+&quot;\&quot;,\n&quot;+
+&quot;\&quot;StepNumber\&quot;:&quot;+vars.get(&quot;stepNum_1&quot;)+&quot;,\n&quot;+
+&quot;\&quot;MoveStepStatus\&quot;:\&quot;COMMAND_SENT\&quot;\n&quot;+
+&quot;}&quot;;
+
+  log.info(&quot;================Command sent=============&quot;+message);
+  
+ channel.basicPublish(&quot;DEVICE_COMM_EXCHANGE&quot;, &quot;${deviceId_1}.movestepstatus&quot;, null, message.getBytes());
+ }
+  catch(Exception e){log.info(&quot;Exception while publishing RMQ event&quot;);}
+finally{
+    channel.close();
+    connection.close();
+}</stringProp>
+              </JSR223Sampler>
+              <hashTree>
+                <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+                  <stringProp name="cacheKey">true</stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="script">TimeZone.setDefault(TimeZone.getTimeZone(&apos;UTC&apos;))
+def now = new Date()
+println now.format(&quot;yyyy-mm-dd HH:mm:ss.000&quot;)
+//println now
+
+File file = new File(&quot;commandSentTimings_${__time(MMddHHmmss)}.csv&quot;)
+file.append(vars.get(&quot;ContainerId&quot;+&quot;_&quot;+vars.get(&quot;count&quot;)))
+file.append(&quot;,&quot;)
+file.append(now.format(&quot;yyyy-mm-dd HH:mm:ss.SSS&quot;))
+file.append(&quot;\n&quot;)</stringProp>
+                  <stringProp name="scriptLanguage">groovy</stringProp>
+                </JSR223PostProcessor>
+                <hashTree/>
+              </hashTree>
+              <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC- move step updated timestamp" enabled="true">
+                <stringProp name="dataSource">SQLDatabase</stringProp>
+                <stringProp name="query">SELECT UPDATED_TIMESTAMP FROM asrsmanager.ASM_MOVE_STEP WHERE CONTAINER_LPN=&apos;${__V(containerLpn_${__V(count)})}&apos;</stringProp>
+                <stringProp name="queryArguments"></stringProp>
+                <stringProp name="queryArgumentsTypes"></stringProp>
+                <stringProp name="queryTimeout"></stringProp>
+                <stringProp name="queryType">Select Statement</stringProp>
+                <stringProp name="resultSetHandler">Store as String</stringProp>
+                <stringProp name="resultVariable">updtTime</stringProp>
+                <stringProp name="variableNames">updtTime</stringProp>
+                <stringProp name="resultSetMaxRows"></stringProp>
+              </JDBCSampler>
+              <hashTree>
+                <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+                  <stringProp name="scriptLanguage">groovy</stringProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="cacheKey">true</stringProp>
+                  <stringProp name="script">sleep(10000);</stringProp>
+                </JSR223PreProcessor>
+                <hashTree/>
+              </hashTree>
+              <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="pickupCompleteAtShuttle" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.Channel;
+ 
+log.info(&quot;===pickupCompleteAtShuttle====&quot;);
+ConnectionFactory factory = new ConnectionFactory();
+factory.setHost(&quot;${__P(hostRMQ)}&quot;);
+factory.setUsername(&quot;guest&quot;);
+    factory.setPassword(&quot;guest&quot;);
+    factory.setVirtualHost(&quot;/&quot;);
+    factory.setPort(5672);
+Connection connection = null;
+Channel channel = null;
+ try{
+    connection = factory.newConnection();
+    channel = connection.createChannel();
+ String message = &quot;{\n&quot;+
+&quot;\&quot;MoveTaskId\&quot;:\&quot;&quot;+vars.get(&quot;moveTaskId_1&quot;)+&quot;\&quot;,\n&quot;+
+&quot;\&quot;StepNumber\&quot;:&quot;+vars.get(&quot;stepNum_1&quot;)+&quot;,\n&quot;+
+&quot;\&quot;MoveStepStatus\&quot;:\&quot;PICKUP_COMPLETE\&quot;\n&quot;+
+&quot;}&quot;;
+
+  log.info(&quot;===================Pickup Complete===========&quot;+message);
+  
+ channel.basicPublish(&quot;DEVICE_COMM_EXCHANGE&quot;, &quot;${deviceId_1}.movestepstatus&quot;, null, message.getBytes());
+ }
+  catch(Exception e){log.info(&quot;Exception while publishing RMQ event&quot;);}
+finally{
+    channel.close();
+    connection.close();
+}</stringProp>
+              </JSR223Sampler>
+              <hashTree>
+                <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+                  <stringProp name="cacheKey">true</stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="script">TimeZone.setDefault(TimeZone.getTimeZone(&apos;UTC&apos;))
+def now = new Date()
+println now.format(&quot;yyyy-mm-dd HH:mm:ss.000&quot;)
+//println now
+
+File file = new File(&quot;pickupCompleteTimings_${__time(MMddHHmmss)}.csv&quot;)
+file.append(vars.get(&quot;ContainerId&quot;+&quot;_&quot;+vars.get(&quot;count&quot;)))
+file.append(&quot;,&quot;)
+file.append(now.format(&quot;yyyy-mm-dd HH:mm:ss.SSS&quot;))
+file.append(&quot;\n&quot;)</stringProp>
+                  <stringProp name="scriptLanguage">groovy</stringProp>
+                </JSR223PostProcessor>
+                <hashTree/>
+              </hashTree>
+              <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC- move step updated timestamp" enabled="true">
+                <stringProp name="dataSource">SQLDatabase</stringProp>
+                <stringProp name="query">SELECT UPDATED_TIMESTAMP FROM asrsmanager.ASM_MOVE_STEP WHERE CONTAINER_LPN=&apos;${__V(containerLpn_${__V(count)})}&apos;</stringProp>
+                <stringProp name="queryArguments"></stringProp>
+                <stringProp name="queryArgumentsTypes"></stringProp>
+                <stringProp name="queryTimeout"></stringProp>
+                <stringProp name="queryType">Select Statement</stringProp>
+                <stringProp name="resultSetHandler">Store as String</stringProp>
+                <stringProp name="resultVariable">updtTime</stringProp>
+                <stringProp name="variableNames">updtTime</stringProp>
+                <stringProp name="resultSetMaxRows"></stringProp>
+              </JDBCSampler>
+              <hashTree>
+                <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+                  <stringProp name="scriptLanguage">groovy</stringProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="cacheKey">true</stringProp>
+                  <stringProp name="script">sleep(10000);</stringProp>
+                </JSR223PreProcessor>
+                <hashTree/>
+              </hashTree>
+              <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="dropoffCompleteAtShuttle" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.Channel;
+ 
+log.info(&quot;===dropoffCompleteAtShuttle====&quot;);
+ConnectionFactory factory = new ConnectionFactory();
+factory.setHost(&quot;${__P(hostRMQ)}&quot;);
+factory.setUsername(&quot;guest&quot;);
+    factory.setPassword(&quot;guest&quot;);
+    factory.setVirtualHost(&quot;/&quot;);
+    factory.setPort(5672);
+Connection connection = null;
+Channel channel = null;
+ try{
+    connection = factory.newConnection();
+    channel = connection.createChannel();
+ String message = &quot;{\n&quot;+
+&quot;\&quot;MoveTaskId\&quot;:\&quot;&quot;+vars.get(&quot;moveTaskId_1&quot;)+&quot;\&quot;,\n&quot;+
+&quot;\&quot;StepNumber\&quot;:&quot;+vars.get(&quot;stepNum_1&quot;)+&quot;,\n&quot;+
+&quot;\&quot;MoveStepStatus\&quot;:\&quot;DROPOFF_COMPLETE\&quot;\n&quot;+
+&quot;}&quot;;
+
+  log.info(&quot;======================Dropoff complete=========&quot;+message);
+  
+ channel.basicPublish(&quot;DEVICE_COMM_EXCHANGE&quot;, &quot;${deviceId_1}.movestepstatus&quot;, null, message.getBytes());
+ }
+  catch(Exception e){log.info(&quot;Exception while publishing RMQ event&quot;);}
+finally{
+    channel.close();
+    connection.close();
+}</stringProp>
+              </JSR223Sampler>
+              <hashTree>
+                <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+                  <stringProp name="cacheKey">true</stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="script">TimeZone.setDefault(TimeZone.getTimeZone(&apos;UTC&apos;))
+def now = new Date()
+println now.format(&quot;yyyy-mm-dd HH:mm:ss.000&quot;)
+//println now
+
+File file = new File(&quot;dropoffCompleteTimings_${__time(MMddHHmmss)}.csv&quot;)
+file.append(vars.get(&quot;ContainerId&quot;+&quot;_&quot;+vars.get(&quot;count&quot;)))
+file.append(&quot;,&quot;)
+file.append(now.format(&quot;yyyy-mm-dd HH:mm:ss.SSS&quot;))
+file.append(&quot;\n&quot;)</stringProp>
+                  <stringProp name="scriptLanguage">groovy</stringProp>
+                </JSR223PostProcessor>
+                <hashTree/>
+              </hashTree>
+            </hashTree>
+            <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC- move step updated timestamp" enabled="true">
+              <stringProp name="dataSource">SQLDatabase</stringProp>
+              <stringProp name="query">SELECT UPDATED_TIMESTAMP FROM asrsmanager.ASM_MOVE_STEP WHERE CONTAINER_LPN=&apos;${__V(containerLpn_${__V(count)})}&apos;</stringProp>
+              <stringProp name="queryArguments"></stringProp>
+              <stringProp name="queryArgumentsTypes"></stringProp>
+              <stringProp name="queryTimeout"></stringProp>
+              <stringProp name="queryType">Select Statement</stringProp>
+              <stringProp name="resultSetHandler">Store as String</stringProp>
+              <stringProp name="resultVariable">updtTime</stringProp>
+              <stringProp name="variableNames">updtTime</stringProp>
+              <stringProp name="resultSetMaxRows"></stringProp>
+            </JDBCSampler>
+            <hashTree>
+              <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">sleep(10000);</stringProp>
+              </JSR223PreProcessor>
+              <hashTree/>
+            </hashTree>
+            <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller - +ve" enabled="false">
+              <stringProp name="IfController.condition">${__groovy(&quot;${msCompStatus_1}&quot; == &quot;300&quot;)}</stringProp>
+              <boolProp name="IfController.evaluateAll">false</boolProp>
+              <boolProp name="IfController.useExpression">true</boolProp>
+            </IfController>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="InfluxDB Each LPN Insert" enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">PickMoveIND,LPNs=${clpn}${count} Move_Task_StatusWhenCreating=&quot;${msCrStatus_1}&quot;,Move_Task_StatusWhenCompleting=&quot;${msCompStatus_1}&quot;,MoveTaskCreatedTimeInDB=&quot;${crTime_1}&quot;,MoveTaskUpdatedTimeInDB=&quot;${upTime_1}&quot;,ResponseTime(Milliseconds)=&quot;${diff_1}&quot;</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain">${__P(influxDBServer)}</stringProp>
+                <stringProp name="HTTPSampler.port">8086</stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">/write?db=${__P(influxDBName)}</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree/>
+            </hashTree>
+            <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller- -ve" enabled="false">
+              <stringProp name="IfController.condition">${__jexl3(&quot;${msCompStatus_1}&quot; != &quot;300&quot;)}</stringProp>
+              <boolProp name="IfController.evaluateAll">false</boolProp>
+              <boolProp name="IfController.useExpression">true</boolProp>
+            </IfController>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="InfluxDB StoreMove_IndividualLPN" enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">PickMoveIND,NonWorkingLPNs=${clpn}${count} LPNStatusWhenCompleting=&quot;${msCompStatus_1}&quot;</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain">${__P(influxDBServer)}</stringProp>
+                <stringProp name="HTTPSampler.port">8086</stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">/write?db=${__P(influxDBName)}</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+        </hashTree>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC-Get details from Move_Step" enabled="true">
+          <stringProp name="dataSource">SQLDatabase</stringProp>
+          <stringProp name="query">select MOVE_TASK_ID,DEVICE_ID,STEP_NUMBER,SPUR_ID,CONTAINER_LPN from asrsmanager.ASM_MOVE_STEP where CONTAINER_LPN like &apos;${__V(containerLpn_${__V(count)})}&apos;</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+          <stringProp name="resultVariable">moveTaskId,deviceId,stepNum,spurId,containerLPN</stringProp>
+          <stringProp name="variableNames">moveTaskId,deviceId,stepNum,spurId,containerLPN</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
+        </JDBCSampler>
+        <hashTree>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">sleep(5000);</stringProp>
+          </JSR223PreProcessor>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group - pickMove" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC-Get Container ID and LPN" enabled="true">
+          <stringProp name="dataSource">SQLDatabase</stringProp>
+          <stringProp name="query">select LPN from container.CON_CONTAINER_LPN where LPN like &apos;${clpn}%&apos; order by created_timestamp asc LIMIT ${caseLoop}</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultSetHandler">Store as String</stringProp>
+          <stringProp name="resultVariable">containerLPN,locationId</stringProp>
+          <stringProp name="variableNames">containerLpn</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="LoopController.loops">${containerLpn_#}</stringProp>
+        </LoopController>
+        <hashTree>
+          <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
+            <stringProp name="CounterConfig.start">1</stringProp>
+            <stringProp name="CounterConfig.end"></stringProp>
+            <stringProp name="CounterConfig.incr">1</stringProp>
+            <stringProp name="CounterConfig.name">count</stringProp>
+            <stringProp name="CounterConfig.format"></stringProp>
+            <boolProp name="CounterConfig.per_user">false</boolProp>
+          </CounterConfig>
+          <hashTree/>
+          <com.zeroclue.jmeter.protocol.amqp.AMQPPublisher guiclass="com.zeroclue.jmeter.protocol.amqp.gui.AMQPPublisherGui" testclass="com.zeroclue.jmeter.protocol.amqp.AMQPPublisher" testname="createPickMove" enabled="true">
+            <stringProp name="AMQPSampler.Exchange">ASRSCLIENT_EXCHANGE</stringProp>
+            <boolProp name="AMQPSampler.ExchangeDurable">true</boolProp>
+            <boolProp name="AMQPSampler.ExchangeAutoDelete">false</boolProp>
+            <boolProp name="AMQPSampler.ExchangeRedeclare">false</boolProp>
+            <stringProp name="AMQPSampler.Queue"></stringProp>
+            <stringProp name="AMQPSampler.RoutingKey">asrsclient.create_pickmove</stringProp>
+            <stringProp name="AMQPSampler.VirtualHost">/</stringProp>
+            <stringProp name="AMQPSampler.MessageTTL"></stringProp>
+            <stringProp name="AMQPSampler.MessageExpires"></stringProp>
+            <stringProp name="AMQPSampler.ExchangeType">direct</stringProp>
+            <stringProp name="AMQPSampler.QueueDurable">true</stringProp>
+            <stringProp name="AMQPSampler.QueueExclusive">false</stringProp>
+            <stringProp name="AMQPSampler.QueueAutoDelete">false</stringProp>
+            <boolProp name="AMQPSampler.Redeclare">false</boolProp>
+            <stringProp name="AMQPSampler.Timeout">1000</stringProp>
+            <stringProp name="AMQPSampler.Iterations">1</stringProp>
+            <stringProp name="AMQPSampler.Host">10.195.89.83</stringProp>
+            <stringProp name="AMQPSampler.Port">5672</stringProp>
+            <stringProp name="AMQPSampler.Username">guest</stringProp>
+            <stringProp name="AMQPSampler.Password">guest</stringProp>
+            <stringProp name="AMQPSampler.SSL">false</stringProp>
+            <boolProp name="AMQPPublisher.Persistent">false</boolProp>
+            <boolProp name="AMQPPublisher.UseTx">false</boolProp>
+            <stringProp name="AMQPPublisher.MessageRoutingKey">asrsclient.create_pickmove</stringProp>
+            <stringProp name="AMQPPublisher.Message">{&quot;SourceLpn&quot;:&quot;${__V(containerLpn_${__V(count)})}&quot;,&quot;SourceLocation&quot;:&quot;${__V(locId_${__V(count)})}&quot;}</stringProp>
+            <stringProp name="AMQPPublisher.MessageType"></stringProp>
+            <stringProp name="AMQPPublisher.ReplyToQueue"></stringProp>
+            <stringProp name="AMQPPublisher.CorrelationId"></stringProp>
+            <stringProp name="AMQPPublisher.ContentType"></stringProp>
+            <stringProp name="AMQPPublisher.MessageId"></stringProp>
+            <elementProp name="AMQPPublisher.Headers" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </com.zeroclue.jmeter.protocol.amqp.AMQPPublisher>
+          <hashTree>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">TimeZone.setDefault(TimeZone.getTimeZone(&apos;UTC&apos;))
+def now = new Date()
+println now.format(&quot;yyyy-mm-dd HH:mm:ss.000&quot;)
+//println now
+
+File file = new File(&quot;pmtimings_${__time(MMddHHmmss)}.csv&quot;)
+file.append(vars.get(&quot;containerId&quot;+&quot;_&quot;+vars.get(&quot;count&quot;)))
+file.append(&quot;,&quot;)
+file.append(now.format(&quot;yyyy-mm-dd HH:mm:ss.SSS&quot;))
+file.append(&quot;\n&quot;)</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+            <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+              <boolProp name="displayJMeterProperties">false</boolProp>
+              <boolProp name="displayJMeterVariables">true</boolProp>
+              <boolProp name="displaySamplerProperties">true</boolProp>
+              <boolProp name="displaySystemProperties">false</boolProp>
+            </DebugPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="createPickMove" enabled="false">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.Channel;
+ 
+log.info(&quot;===createPickMove====&quot;);
+ConnectionFactory factory = new ConnectionFactory();
+factory.setHost(&quot;${__P(hostRMQ)}&quot;);
+factory.setUsername(&quot;guest&quot;);
+factory.setPassword(&quot;guest&quot;);
+factory.setVirtualHost(&quot;/&quot;);
+factory.setPort(5672);
+Connection connection = null;
+Channel channel = null;
+ try{
+    connection = factory.newConnection();
+    channel = connection.createChannel();
+ String message = &quot;{\&quot;SourceLpn\&quot;:\&quot;&quot;+vars.get(&quot;containerLpn&quot;+&quot;_&quot;+vars.get(&quot;count&quot;))+&quot;\&quot;,\&quot;SourceLocation\&quot;: \&quot;&quot;+vars.get(&quot;locId_1&quot;+&quot;_&quot;+vars.get(&quot;count&quot;))\&quot;}&quot;;
+
+log.info(message);
+  
+ channel.basicPublish(&quot;ASRSCLIENT_EXCHANGE&quot;, &quot;asrsclient.create_pickmove&quot;, null, message.getBytes());
+ }
+  catch(Exception e){log.info(&quot;Exception while publishing RMQ event&quot;);}
+finally{
+    channel.close();
+    connection.close();
+}</stringProp>
+          </JSR223Sampler>
+          <hashTree>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">TimeZone.setDefault(TimeZone.getTimeZone(&apos;UTC&apos;))
+def now = new Date()
+println now.format(&quot;yyyy-mm-dd HH:mm:ss.000&quot;)
+//println now
+
+File file = new File(&quot;pmtimings_${__time(MMddHHmmss)}.csv&quot;)
+file.append(vars.get(&quot;containerId&quot;+&quot;_&quot;+vars.get(&quot;count&quot;)))
+file.append(&quot;,&quot;)
+file.append(now.format(&quot;yyyy-mm-dd HH:mm:ss.SSS&quot;))
+file.append(&quot;\n&quot;)</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+          </hashTree>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC-Get details from Move_Step" enabled="false">
+            <stringProp name="dataSource">SQLDatabase</stringProp>
+            <stringProp name="query">select MOVE_TASK_ID,DEVICE_ID,STEP_NUMBER,SPUR_ID,CONTAINER_LPN from asrsmanager.ASM_MOVE_STEP where CONTAINER_LPN like &apos;${__V(containerLpn_${__V(count)})}&apos;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+            <stringProp name="resultVariable">moveTaskId,deviceId,stepNum,spurId,containerLPN</stringProp>
+            <stringProp name="variableNames">moveTaskId,deviceId,stepNum,spurId,containerLPN</stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+          </JDBCSampler>
+          <hashTree>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">sleep(5000);</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+          </hashTree>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC-Task created status - To Influx" enabled="false">
+            <stringProp name="dataSource">SQLDatabase</stringProp>
+            <stringProp name="query">select MOVE_TASK_STATUS from asrsmanager..ASM_MOVE_TASK where CONTAINER_ID like &apos;${__V(containerId_${__V(count)})}&apos;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+            <stringProp name="resultVariable">msCrStatus</stringProp>
+            <stringProp name="variableNames">msCrStatus</stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+          </JDBCSampler>
+          <hashTree/>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="sendReserveSpurMessage" enabled="false">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.Channel;
+ 
+log.info(&quot;===sendReserveSpurMessage====&quot;);
+ConnectionFactory factory = new ConnectionFactory();
+factory.setHost(&quot;${__P(hostRMQ)}&quot;);
+factory.setUsername(&quot;guest&quot;);
+    factory.setPassword(&quot;guest&quot;);
+    factory.setVirtualHost(&quot;/&quot;);
+    factory.setPort(5672);
+Connection connection = null;
+Channel channel = null;
+ try{
+    connection = factory.newConnection();
+    channel = connection.createChannel();
+ String message = &quot;{\n&quot;+
+&quot;\&quot;DeviceId\&quot;:\&quot;&quot;+vars.get(&quot;spurId_1&quot;)+&quot;\&quot;,\n&quot;+
+&quot;\&quot;SpurStatus\&quot;:\&quot;RESERVED\&quot;,\n&quot;+
+&quot;\&quot;ContainerLpn\&quot;:\&quot;&quot;+vars.get(&quot;containerLPN_1&quot;)+&quot;\&quot;\n&quot;+
+&quot;}&quot;;
+ 
+  log.info(message);
+  
+ channel.basicPublish(&quot;DEVICE_COMM_EXCHANGE&quot;, &quot;${spurId_1}.spurstatus&quot;, null, message.getBytes());
+}
+  catch(Exception e){log.info(&quot;Exception while publishing RMQ event&quot;);}
+finally{
+    channel.close();
+    connection.close();
+}</stringProp>
+          </JSR223Sampler>
+          <hashTree>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">sleep(2000);</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+          </hashTree>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="commandSentAtShuttle" enabled="false">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.Channel;
+ 
+log.info(&quot;===commandSentAtShuttle====&quot;);
+ConnectionFactory factory = new ConnectionFactory();
+factory.setHost(&quot;${__P(hostRMQ)}&quot;);
+factory.setUsername(&quot;guest&quot;);
+    factory.setPassword(&quot;guest&quot;);
+    factory.setVirtualHost(&quot;/&quot;);
+    factory.setPort(5672);
+Connection connection = null;
+Channel channel = null;
+ try{
+    connection = factory.newConnection();
+    channel = connection.createChannel();
+ String message = &quot;{\n&quot;+
+&quot;\&quot;MoveTaskId\&quot;:\&quot;&quot;+vars.get(&quot;moveTaskId_1&quot;)+&quot;\&quot;,\n&quot;+
+&quot;\&quot;StepNumber\&quot;:&quot;+vars.get(&quot;stepNum_1&quot;)+&quot;,\n&quot;+
+&quot;\&quot;MoveStepStatus\&quot;:\&quot;COMMAND_SENT\&quot;\n&quot;+
+&quot;}&quot;;
+
+  log.info(message);
+  
+ channel.basicPublish(&quot;DEVICE_COMM_EXCHANGE&quot;, &quot;${deviceId_1}.movestepstatus&quot;, null, message.getBytes());
+ }
+  catch(Exception e){log.info(&quot;Exception while publishing RMQ event&quot;);}
+finally{
+    channel.close();
+    connection.close();
+}</stringProp>
+          </JSR223Sampler>
+          <hashTree>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">sleep(1000);</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+          </hashTree>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="pickupCompleteAtShuttle" enabled="false">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.Channel;
+ 
+log.info(&quot;===pickupCompleteAtShuttle====&quot;);
+ConnectionFactory factory = new ConnectionFactory();
+factory.setHost(&quot;${__P(hostRMQ)}&quot;);
+factory.setUsername(&quot;guest&quot;);
+    factory.setPassword(&quot;guest&quot;);
+    factory.setVirtualHost(&quot;/&quot;);
+    factory.setPort(5672);
+Connection connection = null;
+Channel channel = null;
+ try{
+    connection = factory.newConnection();
+    channel = connection.createChannel();
+ String message = &quot;{\n&quot;+
+&quot;\&quot;MoveTaskId\&quot;:\&quot;&quot;+vars.get(&quot;moveTaskId_1&quot;)+&quot;\&quot;,\n&quot;+
+&quot;\&quot;StepNumber\&quot;:&quot;+vars.get(&quot;stepNum_1&quot;)+&quot;,\n&quot;+
+&quot;\&quot;MoveStepStatus\&quot;:\&quot;PICKUP_COMPLETE\&quot;\n&quot;+
+&quot;}&quot;;
+
+  log.info(message);
+  
+ channel.basicPublish(&quot;DEVICE_COMM_EXCHANGE&quot;, &quot;${deviceId_1}.movestepstatus&quot;, null, message.getBytes());
+ }
+  catch(Exception e){log.info(&quot;Exception while publishing RMQ event&quot;);}
+finally{
+    channel.close();
+    connection.close();
+}</stringProp>
+          </JSR223Sampler>
+          <hashTree/>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="dropoffCompleteAtShuttle" enabled="false">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.Channel;
+ 
+log.info(&quot;===dropoffCompleteAtShuttle====&quot;);
+ConnectionFactory factory = new ConnectionFactory();
+factory.setHost(&quot;${__P(hostRMQ)}&quot;);
+factory.setUsername(&quot;guest&quot;);
+    factory.setPassword(&quot;guest&quot;);
+    factory.setVirtualHost(&quot;/&quot;);
+    factory.setPort(5672);
+Connection connection = null;
+Channel channel = null;
+ try{
+    connection = factory.newConnection();
+    channel = connection.createChannel();
+ String message = &quot;{\n&quot;+
+&quot;\&quot;MoveTaskId\&quot;:\&quot;&quot;+vars.get(&quot;moveTaskId_1&quot;)+&quot;\&quot;,\n&quot;+
+&quot;\&quot;StepNumber\&quot;:&quot;+vars.get(&quot;stepNum_1&quot;)+&quot;,\n&quot;+
+&quot;\&quot;MoveStepStatus\&quot;:\&quot;DROPOFF_COMPLETE\&quot;\n&quot;+
+&quot;}&quot;;
+
+  log.info(message);
+  
+ channel.basicPublish(&quot;DEVICE_COMM_EXCHANGE&quot;, &quot;${deviceId_1}.movestepstatus&quot;, null, message.getBytes());
+ }
+  catch(Exception e){log.info(&quot;Exception while publishing RMQ event&quot;);}
+finally{
+    channel.close();
+    connection.close();
+}</stringProp>
+          </JSR223Sampler>
+          <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC-Task completed status - To Influx" enabled="false">
+            <stringProp name="dataSource">SQLDatabase</stringProp>
+            <stringProp name="query">SELECT MOVE_TASK_STATUS,REPLACE(CREATED_TIMESTAMP,&apos; &apos;,&apos;_&apos;) AS CREATED_TIMESTAMP, REPLACE(UPDATED_TIMESTAMP,&apos; &apos;,&apos;_&apos;) AS UPDATED_TIMESTAMP,DATEDIFF(CREATED_TIMESTAMP,UPDATED_TIMESTAMP) AS RESPONSETIME FROM asrsmanager.ASM_MOVE_TASK WHERE CONTAINER_ID LIKE &apos;${__V(containerId_${__V(count)})}&apos;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+            <stringProp name="resultVariable">msCompStatus,crTime,upTime,diff</stringProp>
+            <stringProp name="variableNames">msCompStatus,crTime,upTime,diff</stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+          </JDBCSampler>
+          <hashTree>
+            <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">sleep(10000);</stringProp>
+            </JSR223PreProcessor>
+            <hashTree/>
+          </hashTree>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller - +ve" enabled="false">
+            <stringProp name="IfController.condition">${__groovy(&quot;${msCompStatus_1}&quot; == &quot;300&quot;)}</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+            <boolProp name="IfController.useExpression">true</boolProp>
+          </IfController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="InfluxDB Each LPN Insert" enabled="true">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">PickMoveIND,LPNs=${clpn}${count} Move_Task_StatusWhenCreating=&quot;${msCrStatus_1}&quot;,Move_Task_StatusWhenCompleting=&quot;${msCompStatus_1}&quot;,MoveTaskCreatedTimeInDB=&quot;${crTime_1}&quot;,MoveTaskUpdatedTimeInDB=&quot;${upTime_1}&quot;,ResponseTime(Milliseconds)=&quot;${diff_1}&quot;</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${__P(influxDBServer)}</stringProp>
+              <stringProp name="HTTPSampler.port">8086</stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/write?db=${__P(influxDBName)}</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree/>
+          </hashTree>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller- -ve" enabled="false">
+            <stringProp name="IfController.condition">${__jexl3(&quot;${msCompStatus_1}&quot; != &quot;300&quot;)}</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+            <boolProp name="IfController.useExpression">true</boolProp>
+          </IfController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="InfluxDB StoreMove_IndividualLPN" enabled="false">
+              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">PickMoveIND,NonWorkingLPNs=${clpn}${count} LPNStatusWhenCompleting=&quot;${msCompStatus_1}&quot;</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${__P(influxDBServer)}</stringProp>
+              <stringProp name="HTTPSampler.port">8086</stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/write?db=${__P(influxDBName)}</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+      </hashTree>
+      <PostThreadGroup guiclass="PostThreadGroupGui" testclass="PostThreadGroup" testname="tearDown Thread Group" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </PostThreadGroup>
+      <hashTree>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get Pick Move Task count" enabled="true">
+          <stringProp name="dataSource">SQLDatabase</stringProp>
+          <stringProp name="query">SELECT COUNT(CONTAINER_LPN) FROM ASRSMANAGER..ASM_MOVE_TASK WHERE CONTAINER_LPN LIKE &apos;${clpn}%&apos;</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultSetHandler">Count Records</stringProp>
+          <stringProp name="resultVariable">pickMove_CrCount</stringProp>
+          <stringProp name="variableNames">pickMove_CrCount</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
+        </JDBCSampler>
+        <hashTree>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">sleep(3000);</stringProp>
+          </JSR223PreProcessor>
+          <hashTree/>
+        </hashTree>
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Get Pick Move Comp count" enabled="true">
+          <stringProp name="dataSource">SQLDatabase</stringProp>
+          <stringProp name="query">SELECT COUNT(CONTAINER_LPN) FROM ASRSMANAGER..ASM_MOVE_TASK WHERE CONTAINER_LPN LIKE &apos;${clpn}%&apos; AND MOVE_TASK_STATUS=&apos;300&apos;</stringProp>
+          <stringProp name="queryArguments"></stringProp>
+          <stringProp name="queryArgumentsTypes"></stringProp>
+          <stringProp name="queryTimeout"></stringProp>
+          <stringProp name="queryType">Select Statement</stringProp>
+          <stringProp name="resultSetHandler">Count Records</stringProp>
+          <stringProp name="resultVariable">pickMove_CmpCount</stringProp>
+          <stringProp name="variableNames">pickMove_CmpCount</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
+        </JDBCSampler>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="InfluxDB Insert Summary" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">PickMove,LpnPattern=${clpn}%,1StartTimeOfTest=${startTime},EndTimeOfTest=${__time(MM/dd/yyyy_HH:mm:sszzz)} ExpectedMTs=&quot;${caseLoop}&quot;,ActualMTsCreated=&quot;${pickMove_CrCount_1}&quot;,CompletedMTs=&quot;${pickMove_CmpCount_1}&quot;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${__P(influxDBServer)}</stringProp>
+          <stringProp name="HTTPSampler.port">8086</stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/write?db=${__P(influxDBName)}</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+      </hashTree>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
