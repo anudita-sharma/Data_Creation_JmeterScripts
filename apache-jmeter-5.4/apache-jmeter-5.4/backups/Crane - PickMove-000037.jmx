@@ -87,7 +87,7 @@
           </elementProp>
           <elementProp name="ip" elementType="Argument">
             <stringProp name="Argument.name">ip</stringProp>
-            <stringProp name="Argument.value">10.8.191.191</stringProp>
+            <stringProp name="Argument.value">10.8.191.146</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="rmq_port" elementType="Argument">
@@ -185,7 +185,7 @@
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop : createp pick move" enabled="false">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop : createp pick move" enabled="true">
           <boolProp name="LoopController.continue_forever">true</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </LoopController>
@@ -283,9 +283,9 @@
             <stringProp name="variableNames">ctlpn</stringProp>
           </CSVDataSet>
           <hashTree/>
-          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC-Get Empty Location Alias" enabled="false">
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC-Get Empty Location Alias" enabled="true">
             <stringProp name="dataSource">PostgresDatabase</stringProp>
-            <stringProp name="query">Select location_id from &quot;location&quot;.loc_location where is_empty is true and is_online is true and lock_reason_code is null and aisle = &apos;${aisle}&apos; and DEPTH=&apos;00&apos;</stringProp>
+            <stringProp name="query">Select location_id from location.loc_location where is_empty is true and is_online is true and lock_reason_code is null and aisle = &apos;${aisle}&apos; and DEPTH=&apos;00&apos;</stringProp>
             <stringProp name="queryArguments"></stringProp>
             <stringProp name="queryArgumentsTypes"></stringProp>
             <stringProp name="queryTimeout"></stringProp>
@@ -477,12 +477,12 @@
           </com.zeroclue.jmeter.protocol.amqp.AMQPPublisher>
           <hashTree/>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="PUTC/GETC Loop Controller" enabled="true">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="PUTC/GETC Loop Controller" enabled="false">
           <boolProp name="LoopController.continue_forever">true</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </LoopController>
         <hashTree>
-          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="GETC_POS_RUNNING" enabled="true">
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="GETC_POS_RUNNING" enabled="false">
             <stringProp name="scriptLanguage">groovy</stringProp>
             <stringProp name="parameters"></stringProp>
             <stringProp name="filename"></stringProp>
@@ -519,7 +519,7 @@ finally{
 }</stringProp>
           </JSR223Sampler>
           <hashTree/>
-          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname=" GETC_EXECUTED" enabled="true">
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname=" GETC_EXECUTED" enabled="false">
             <stringProp name="scriptLanguage">groovy</stringProp>
             <stringProp name="parameters"></stringProp>
             <stringProp name="filename"></stringProp>
@@ -556,7 +556,7 @@ finally{
 }</stringProp>
           </JSR223Sampler>
           <hashTree/>
-          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="PUTC_POS_RUNNING" enabled="true">
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="PUTC_POS_RUNNING" enabled="false">
             <stringProp name="scriptLanguage">groovy</stringProp>
             <stringProp name="parameters"></stringProp>
             <stringProp name="filename"></stringProp>
@@ -593,7 +593,7 @@ finally{
 }</stringProp>
           </JSR223Sampler>
           <hashTree/>
-          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="PUTC_EXECUTED" enabled="true">
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="PUTC_EXECUTED" enabled="false">
             <stringProp name="scriptLanguage">groovy</stringProp>
             <stringProp name="parameters"></stringProp>
             <stringProp name="filename"></stringProp>
@@ -618,43 +618,6 @@ Channel channel = null;
     sleep(1000);
     def u = $/\/$;
  String message = &quot;{\&quot;DeviceId\&quot;:\&quot;crane-LinxServer${deviceIdno}\&quot;,\&quot;Message\&quot;:\&quot;&quot;+u+&quot;u00021~43762~0~46~0~137~True~False~False~False~True~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~1~1~1~0~79~1~2~0~1~0~0~0&quot;+u+&quot;u0003\&quot;}&quot;;
-
-  log.info(message);
-  
- channel.basicPublish(&quot;SOCKET_PROXY_EXCHANGE&quot;, &quot;crane-LinxServer${deviceIdno}.from-device&quot;, null, message.getBytes());
-  }
-  catch(Exception e){log.info(&quot;Exception while publishing RMQ event&quot;);}
-finally{
-    channel.close();
-    connection.close();
-}</stringProp>
-          </JSR223Sampler>
-          <hashTree/>
-          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="NO_FUNNC_RUNNING" enabled="true">
-            <stringProp name="scriptLanguage">groovy</stringProp>
-            <stringProp name="parameters"></stringProp>
-            <stringProp name="filename"></stringProp>
-            <stringProp name="cacheKey">true</stringProp>
-            <stringProp name="script">import com.rabbitmq.client.ConnectionFactory;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.Channel;
-
-log.info(&quot;===NO_FUNNC_RUNNING====&quot;);
-ConnectionFactory factory = new ConnectionFactory();
-factory.setHost(&quot;${ip}&quot;);
-factory.setUsername(&quot;momentumwes&quot;);
-    factory.setPassword(&quot;momentumwesrabbitmq@123&quot;);
-    factory.setPort(5672);
-   
-    
-Connection connection = null;
-Channel channel = null;
- try{
-    connection = factory.newConnection();
-    channel = connection.createChannel();
-    sleep(1000);
-    def u = $/\/$;
- String message = &quot;{\&quot;DeviceId\&quot;:\&quot;crane-LinxServer${deviceIdno}\&quot;,\&quot;Message\&quot;:\&quot;&quot;+u+&quot;u00021~43762~0~46~0~0~True~False~False~False~True~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~1~1~1~0~79~1~2~0~1~0~0~0&quot;+u+&quot;u0003\&quot;}&quot;;
 
   log.info(message);
   

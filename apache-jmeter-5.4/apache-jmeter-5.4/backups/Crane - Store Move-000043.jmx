@@ -71,7 +71,7 @@
           </elementProp>
           <elementProp name="hostServer" elementType="Argument">
             <stringProp name="Argument.name">hostServer</stringProp>
-            <stringProp name="Argument.value">10.8.191.191</stringProp>
+            <stringProp name="Argument.value">10.8.191.146</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="hostPort_inventory" elementType="Argument">
@@ -96,13 +96,13 @@
           </elementProp>
           <elementProp name="deviceId" elementType="Argument">
             <stringProp name="Argument.name">deviceId</stringProp>
-            <stringProp name="Argument.value">AR01</stringProp>
+            <stringProp name="Argument.value">AR02</stringProp>
             <stringProp name="Argument.desc">of Crane</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="deviceIdno" elementType="Argument">
             <stringProp name="Argument.name">deviceIdno</stringProp>
-            <stringProp name="Argument.value">1</stringProp>
+            <stringProp name="Argument.value">2</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="level" elementType="Argument">
@@ -594,7 +594,7 @@ finally{
           <stringProp name="LoopController.loops">1</stringProp>
         </LoopController>
         <hashTree>
-          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="No_FUNC_RUNNING" enabled="false">
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="No_FUNC_RUNNING" enabled="true">
             <stringProp name="scriptLanguage">groovy</stringProp>
             <stringProp name="parameters"></stringProp>
             <stringProp name="filename"></stringProp>
@@ -818,7 +818,7 @@ finally{
 }</stringProp>
           </JSR223Sampler>
           <hashTree/>
-          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="PUTC_EXECUTED" enabled="false">
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="PUTC_EXECUTED" enabled="true">
             <stringProp name="scriptLanguage">groovy</stringProp>
             <stringProp name="parameters"></stringProp>
             <stringProp name="filename"></stringProp>

@@ -71,7 +71,7 @@
           </elementProp>
           <elementProp name="hostServer" elementType="Argument">
             <stringProp name="Argument.name">hostServer</stringProp>
-            <stringProp name="Argument.value">10.8.191.146</stringProp>
+            <stringProp name="Argument.value">10.8.191.191</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="hostPort_inventory" elementType="Argument">
@@ -131,7 +131,7 @@
         </collectionProp>
       </HeaderManager>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -198,7 +198,7 @@
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
-        <kg.apc.jmeter.samplers.DummySampler guiclass="kg.apc.jmeter.samplers.DummySamplerGui" testclass="kg.apc.jmeter.samplers.DummySampler" testname="Unique Number" enabled="true">
+        <kg.apc.jmeter.samplers.DummySampler guiclass="kg.apc.jmeter.samplers.DummySamplerGui" testclass="kg.apc.jmeter.samplers.DummySampler" testname="Unique Number" enabled="false">
           <boolProp name="WAITING">true</boolProp>
           <boolProp name="SUCCESFULL">true</boolProp>
           <stringProp name="RESPONSE_CODE">200</stringProp>
@@ -213,7 +213,7 @@ without actual network activity. This helps debugging tests.</stringProp>
           <stringProp name="RESULT_CLASS">org.apache.jmeter.samplers.SampleResult</stringProp>
         </kg.apc.jmeter.samplers.DummySampler>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create Product Class" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create Product Class" enabled="false">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -242,7 +242,7 @@ without actual network activity. This helps debugging tests.</stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Product Class" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Product Class" enabled="false">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
@@ -271,7 +271,7 @@ without actual network activity. This helps debugging tests.</stringProp>
           </RegexExtractor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create Item" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Create Item" enabled="false">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -322,7 +322,7 @@ without actual network activity. This helps debugging tests.</stringProp>
           </RegexExtractor>
           <hashTree/>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop : create_Case_Inventory" enabled="true">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop : create_Case_Inventory" enabled="false">
           <boolProp name="LoopController.continue_forever">true</boolProp>
           <stringProp name="LoopController.loops">${caseLoop}</stringProp>
         </LoopController>
@@ -501,7 +501,7 @@ f.close();</stringProp>
           </TestAction>
           <hashTree/>
         </hashTree>
-        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="JSR223 Sampler" enabled="true">
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="JSR223 Sampler" enabled="false">
           <stringProp name="scriptLanguage">groovy</stringProp>
           <stringProp name="parameters"></stringProp>
           <stringProp name="filename"></stringProp>
@@ -509,7 +509,7 @@ f.close();</stringProp>
           <stringProp name="script">sleep(1000)</stringProp>
         </JSR223Sampler>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Storage Allocation" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Storage Allocation" enabled="false">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -519,8 +519,8 @@ f.close();</stringProp>
   &quot;ContainerLpn&quot;: &quot;${ctlpn}&quot;,&#xd;
   &quot;ScannerId&quot;: &quot;300&quot;,&#xd;
   &quot;ContainerDimension&quot;: {&#xd;
-    &quot;ContainerLength&quot;: 300,&#xd;
-    &quot;ContainerWidth&quot;: 300&#xd;
+    &quot;ContainerLength&quot;: 300.0,&#xd;
+    &quot;ContainerWidth&quot;: 300.0&#xd;
   },&#xd;
   &quot;LocationFilter&quot;: {&#xd;
     &quot;Zone&quot;: [&#xd;
@@ -553,7 +553,7 @@ f.close();</stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree/>
-        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Pickup - Spur" enabled="true">
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Pickup - Spur" enabled="false">
           <stringProp name="cacheKey">true</stringProp>
           <stringProp name="filename"></stringProp>
           <stringProp name="parameters"></stringProp>
@@ -575,11 +575,11 @@ Channel channel = null;
     connection = factory.newConnection();
     channel = connection.createChannel();
     sleep(1000);
- String message = &quot;{\&quot;DeviceId\&quot;:\&quot;PickUp-1\&quot;,\&quot;ContainerLpn\&quot;:[\&quot;&quot;+vars.get(&quot;clpn&quot;)+&quot;\&quot;]}&quot;;
+ String message = &quot;{\&quot;DeviceId\&quot;:\&quot;PickUp-${deviceIdno}\&quot;,\&quot;ContainerLpn\&quot;:[\&quot;&quot;+vars.get(&quot;clpn&quot;)+&quot;\&quot;]}&quot;;
 
   log.info(message);
   
- channel.basicPublish(&quot;DEVICE_COMM_EXCHANGE&quot;, &quot;PickUp-1.containerstatus&quot;, null, message.getBytes());
+ channel.basicPublish(&quot;DEVICE_COMM_EXCHANGE&quot;, &quot;PickUp-${deviceIdno}.containerstatus&quot;, null, message.getBytes());
   }
   catch(Exception e){log.info(&quot;Exception while publishing RMQ event&quot;);}
 finally{
@@ -589,12 +589,17 @@ finally{
           <stringProp name="scriptLanguage">groovy</stringProp>
         </JSR223Sampler>
         <hashTree/>
-        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="No_FUNC_RUNNING" enabled="true">
-          <stringProp name="scriptLanguage">groovy</stringProp>
-          <stringProp name="parameters"></stringProp>
-          <stringProp name="filename"></stringProp>
-          <stringProp name="cacheKey">true</stringProp>
-          <stringProp name="script">import com.rabbitmq.client.ConnectionFactory;
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="PUTC/GETC Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </LoopController>
+        <hashTree>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="No_FUNC_RUNNING" enabled="false">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.Channel;
 
@@ -613,7 +618,7 @@ Channel channel = null;
     channel = connection.createChannel();
     sleep(1000);
     def u = $/\/$;
- String message = &quot;{\&quot;DeviceId\&quot;:\&quot;crane-LinxServer${deviceIdno}\&quot;,\&quot;Message\&quot;:\&quot;&quot;+ u +&quot;u00021~43762~0~46~0~0~False~False~False~False~True~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~1~1~1~0~79~1~2~0~1~0~0~0&quot;+u+&quot;u0003\&quot;]}&quot;;
+ String message = &quot;{\&quot;DeviceId\&quot;:\&quot;crane-LinxServer${deviceIdno}\&quot;,\&quot;Message\&quot;:\&quot;&quot;+ u +&quot;u00021~43762~0~46~0~0~True~False~False~False~True~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~1~1~1~0~79~1~2~0~1~0~0~0&quot;+u+&quot;u0003\&quot;}&quot;;
 
   log.info(message);
   
@@ -624,14 +629,14 @@ finally{
     channel.close();
     connection.close();
 }</stringProp>
-        </JSR223Sampler>
-        <hashTree/>
-        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="  GETC_POS_RUNNING" enabled="true">
-          <stringProp name="scriptLanguage">groovy</stringProp>
-          <stringProp name="parameters"></stringProp>
-          <stringProp name="filename"></stringProp>
-          <stringProp name="cacheKey">true</stringProp>
-          <stringProp name="script">import com.rabbitmq.client.ConnectionFactory;
+          </JSR223Sampler>
+          <hashTree/>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="GETC_POS_RUNNING" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.Channel;
 
@@ -650,7 +655,7 @@ Channel channel = null;
     channel = connection.createChannel();
     sleep(1000);
     def u = $/\/$;
- String message = &quot;{\&quot;DeviceId\&quot;:\&quot;crane-LinxServer${deviceIdno}\&quot;,\&quot;Message\&quot;:\&quot;&quot;+c+&quot;u00021~43762~0~46~0~113~False~False~False~False~True~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~1~1~1~0~79~1~2~0~1~0~0~0&quot;+c+&quot;u0003\&quot;]}&quot;;
+ String message = &quot;{\&quot;DeviceId\&quot;:\&quot;crane-LinxServer${deviceIdno}\&quot;,\&quot;Message\&quot;:\&quot;&quot;+u+&quot;u00021~43762~0~46~0~113~True~False~False~False~True~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~1~1~1~0~79~1~2~0~1~0~0~0&quot;+u+&quot;u0003\&quot;}&quot;;
 
   log.info(message);
   
@@ -661,14 +666,52 @@ finally{
     channel.close();
     connection.close();
 }</stringProp>
-        </JSR223Sampler>
-        <hashTree/>
-        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname=" GETC_EXECUTED" enabled="true">
-          <stringProp name="scriptLanguage">groovy</stringProp>
-          <stringProp name="parameters"></stringProp>
-          <stringProp name="filename"></stringProp>
-          <stringProp name="cacheKey">true</stringProp>
-          <stringProp name="script">import com.rabbitmq.client.ConnectionFactory;
+          </JSR223Sampler>
+          <hashTree/>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="CR_GETC_LOC_EMPTY" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.Channel;
+
+log.info(&quot;===CR_GETC_LOC_EMPTY====&quot;);
+ConnectionFactory factory = new ConnectionFactory();
+factory.setHost(&quot;${hostServer}&quot;);
+factory.setUsername(&quot;momentumwes&quot;);
+    factory.setPassword(&quot;momentumwesrabbitmq@123&quot;);
+    factory.setPort(5672);
+   
+    
+Connection connection = null;
+Channel channel = null;
+ try{
+    connection = factory.newConnection();
+    channel = connection.createChannel();
+    sleep(1000);
+    def u = $/\/$;
+ String message = &quot;{\&quot;DeviceId\&quot;:\&quot;crane-LinxServer${deviceIdno}\&quot;,\&quot;Message\&quot;:\&quot;&quot;+u+&quot;u00021~43762~0~46~0~125~True~False~False~False~True~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~1~1~1~0~79~1~2~0~1~0~0~0&quot;+u+&quot;u0003\&quot;}&quot;;
+
+  log.info(message);
+  
+ channel.basicPublish(&quot;SOCKET_PROXY_EXCHANGE&quot;, &quot;crane-LinxServer${deviceIdno}.from-device&quot;, null, message.getBytes());
+  }
+  catch(Exception e){log.info(&quot;Exception while publishing RMQ event&quot;);}
+finally{
+    channel.close();
+    connection.close();
+}</stringProp>
+            <stringProp name="TestPlan.comments">Disable all the following steps if using this to create an empty fault</stringProp>
+          </JSR223Sampler>
+          <hashTree/>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname=" GETC_EXECUTED" enabled="false">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.Channel;
 
@@ -687,7 +730,7 @@ Channel channel = null;
     channel = connection.createChannel();
     sleep(1000);
     def u = $/\/$;
- String message = &quot;{\&quot;DeviceId\&quot;:\&quot;crane-LinxServer${deviceIdno}\&quot;,\&quot;Message\&quot;:\&quot;&quot;+c+&quot;u00021~43762~0~46~0~121~False~False~False~False~True~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~1~1~1~0~79~1~2~0~1~0~0~0&quot;+c+&quot;u0003\&quot;]}&quot;;
+ String message = &quot;{\&quot;DeviceId\&quot;:\&quot;crane-LinxServer${deviceIdno}\&quot;,\&quot;Message\&quot;:\&quot;&quot;+u+&quot;u00021~43762~0~46~0~121~True~False~False~False~True~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~1~1~1~0~79~1~2~0~1~0~0~0&quot;+u+&quot;u0003\&quot;}&quot;;
 
   log.info(message);
   
@@ -698,14 +741,14 @@ finally{
     channel.close();
     connection.close();
 }</stringProp>
-        </JSR223Sampler>
-        <hashTree/>
-        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="PUTC_POS_RUNNING" enabled="true">
-          <stringProp name="scriptLanguage">groovy</stringProp>
-          <stringProp name="parameters"></stringProp>
-          <stringProp name="filename"></stringProp>
-          <stringProp name="cacheKey">true</stringProp>
-          <stringProp name="script">import com.rabbitmq.client.ConnectionFactory;
+          </JSR223Sampler>
+          <hashTree/>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="PUTC_POS_RUNNING" enabled="false">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.Channel;
 
@@ -724,7 +767,7 @@ Channel channel = null;
     channel = connection.createChannel();
     sleep(1000);
     def u = $/\/$;
- String message = &quot;{\&quot;DeviceId\&quot;:\&quot;crane-LinxServer${deviceIdno}\&quot;,\&quot;Message\&quot;:\&quot;&quot;+c+&quot;u00021~43762~0~46~0~129~False~False~False~False~True~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~1~1~1~0~79~1~2~0~1~0~0~0&quot;+c+&quot;u0003\&quot;]}&quot;;
+ String message = &quot;{\&quot;DeviceId\&quot;:\&quot;crane-LinxServer${deviceIdno}\&quot;,\&quot;Message\&quot;:\&quot;&quot;+u+&quot;u00021~43762~0~46~0~129~True~False~False~False~True~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~1~1~1~0~79~1~2~0~1~0~0~0&quot;+u+&quot;u0003\&quot;}&quot;;
 
   log.info(message);
   
@@ -735,15 +778,15 @@ finally{
     channel.close();
     connection.close();
 }</stringProp>
-        </JSR223Sampler>
-        <hashTree/>
-        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Occupational fault" enabled="true">
-          <stringProp name="TestPlan.comments">Disable PUTC executed if running this fault</stringProp>
-          <stringProp name="scriptLanguage">groovy</stringProp>
-          <stringProp name="parameters"></stringProp>
-          <stringProp name="filename"></stringProp>
-          <stringProp name="cacheKey">true</stringProp>
-          <stringProp name="script">import com.rabbitmq.client.ConnectionFactory;
+          </JSR223Sampler>
+          <hashTree/>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Occupational fault" enabled="false">
+            <stringProp name="TestPlan.comments">Disable PUTC executed if running this fault</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.Channel;
 
@@ -762,7 +805,7 @@ Channel channel = null;
     channel = connection.createChannel();
     sleep(1000);
     def u = $/\/$;
- String message = &quot;{\&quot;DeviceId\&quot;:\&quot;crane-LinxServer${deviceIdno}\&quot;,\&quot;Message\&quot;:\&quot;&quot;+c+&quot;u00021~43762~0~46~0~141~False~False~False~False~True~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~1~1~1~0~79~1~2~0~1~0~0~0&quot;+c+&quot;u0003\&quot;]}&quot;;
+ String message = &quot;{\&quot;DeviceId\&quot;:\&quot;crane-LinxServer${deviceIdno}\&quot;,\&quot;Message\&quot;:\&quot;&quot;+u+&quot;u00021~43762~0~46~0~141~True~False~False~False~True~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~1~1~1~0~79~1~2~0~1~0~0~0&quot;+u+&quot;u0003\&quot;}&quot;;
 
   log.info(message);
   
@@ -773,14 +816,14 @@ finally{
     channel.close();
     connection.close();
 }</stringProp>
-        </JSR223Sampler>
-        <hashTree/>
-        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="PUTC_EXECUTED" enabled="false">
-          <stringProp name="scriptLanguage">groovy</stringProp>
-          <stringProp name="parameters"></stringProp>
-          <stringProp name="filename"></stringProp>
-          <stringProp name="cacheKey">true</stringProp>
-          <stringProp name="script">import com.rabbitmq.client.ConnectionFactory;
+          </JSR223Sampler>
+          <hashTree/>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="PUTC_EXECUTED" enabled="false">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.Channel;
 
@@ -799,7 +842,7 @@ Channel channel = null;
     channel = connection.createChannel();
     sleep(1000);
     def u = $/\/$;
- String message = &quot;{\&quot;DeviceId\&quot;:\&quot;crane-LinxServer${deviceIdno}\&quot;,\&quot;Message\&quot;:\&quot;&quot;+c+&quot;u00021~43762~0~46~0~137~False~False~False~False~True~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~1~1~1~0~79~1~2~0~1~0~0~0&quot;+c+&quot;u0003\&quot;]}&quot;;
+ String message = &quot;{\&quot;DeviceId\&quot;:\&quot;crane-LinxServer${deviceIdno}\&quot;,\&quot;Message\&quot;:\&quot;&quot;+u+&quot;u00021~43762~0~46~0~137~True~False~False~False~True~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~1~1~1~0~79~1~2~0~1~0~0~0&quot;+u+&quot;u0003\&quot;}&quot;;
 
   log.info(message);
   
@@ -810,8 +853,46 @@ finally{
     channel.close();
     connection.close();
 }</stringProp>
-        </JSR223Sampler>
-        <hashTree/>
+          </JSR223Sampler>
+          <hashTree/>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="No_FUNC_RUNNING" enabled="false">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.Channel;
+
+log.info(&quot;===No_FUNC_RUNNING====&quot;);
+ConnectionFactory factory = new ConnectionFactory();
+factory.setHost(&quot;${hostServer}&quot;);
+factory.setUsername(&quot;momentumwes&quot;);
+    factory.setPassword(&quot;momentumwesrabbitmq@123&quot;);
+    factory.setPort(5672);
+   
+    
+Connection connection = null;
+Channel channel = null;
+ try{
+    connection = factory.newConnection();
+    channel = connection.createChannel();
+    sleep(1000);
+    def u = $/\/$;
+ String message = &quot;{\&quot;DeviceId\&quot;:\&quot;crane-LinxServer${deviceIdno}\&quot;,\&quot;Message\&quot;:\&quot;&quot;+ u +&quot;u00021~43762~0~46~0~0~True~False~False~False~True~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~False~1~1~1~0~79~1~2~0~1~0~0~0&quot;+u+&quot;u0003\&quot;}&quot;;
+
+  log.info(message);
+  
+ channel.basicPublish(&quot;SOCKET_PROXY_EXCHANGE&quot;, &quot;crane-LinxServer${deviceIdno}.from-device&quot;, null, message.getBytes());
+  }
+  catch(Exception e){log.info(&quot;Exception while publishing RMQ event&quot;);}
+finally{
+    channel.close();
+    connection.close();
+}</stringProp>
+          </JSR223Sampler>
+          <hashTree/>
+        </hashTree>
       </hashTree>
       <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>

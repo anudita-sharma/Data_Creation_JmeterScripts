@@ -71,17 +71,17 @@
           </elementProp>
           <elementProp name="hostServer" elementType="Argument">
             <stringProp name="Argument.name">hostServer</stringProp>
-            <stringProp name="Argument.value">10.8.191.183</stringProp>
+            <stringProp name="Argument.value">10.8.191.146</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="hostPort_inventory" elementType="Argument">
             <stringProp name="Argument.name">hostPort_inventory</stringProp>
-            <stringProp name="Argument.value">8091</stringProp>
+            <stringProp name="Argument.value">8061</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="hostPort_container" elementType="Argument">
             <stringProp name="Argument.name">hostPort_container</stringProp>
-            <stringProp name="Argument.value">8091</stringProp>
+            <stringProp name="Argument.value">8071</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -362,7 +362,7 @@ f.close();</stringProp>
     &quot;MaxQuantity&quot;: 100.0,&#xd;
     &quot;MinQuantity&quot;: 1.0,&#xd;
     &quot;Quantity&quot;: {&#xd;
-        &quot;Qty&quot;: 50.0,&#xd;
+        &quot;Qty&quot;: 5.0,&#xd;
         &quot;UOM&quot;: {&#xd;
             &quot;Code&quot;: &quot;Case&quot;&#xd;
         }&#xd;
@@ -381,6 +381,42 @@ f.close();</stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
             <stringProp name="HTTPSampler.path">/api/inventory/inventory/createByContainerOrLocation</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="putawayTask" enabled="false">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+	&quot;ContainerLpn&quot; : &quot;${clpn}${caseCount}&quot;,&#xd;
+	&quot;ScannerId&quot; : &quot;880&quot;,&#xd;
+	&quot;ContainerDimension&quot; : {&#xd;
+		&quot;ContainerLength&quot; : 180.0,&#xd;
+		&quot;ContainerWidth&quot; : 200.0&#xd;
+	},&#xd;
+	&quot;LocationFilter&quot;: {&#xd;
+		&quot;Zone&quot; : [&quot;C1&quot;]&#xd;
+	}&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${__P(hostServer)}</stringProp>
+            <stringProp name="HTTPSampler.port">${__P(hostPort_putaway)}</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">api/putaway/putawayTask/storageAllocation</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>

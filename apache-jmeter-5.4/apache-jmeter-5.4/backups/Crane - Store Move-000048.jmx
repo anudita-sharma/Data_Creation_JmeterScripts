@@ -71,7 +71,7 @@
           </elementProp>
           <elementProp name="hostServer" elementType="Argument">
             <stringProp name="Argument.name">hostServer</stringProp>
-            <stringProp name="Argument.value">10.8.191.191</stringProp>
+            <stringProp name="Argument.value">10.8.191.146</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="hostPort_inventory" elementType="Argument">

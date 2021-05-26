@@ -76,12 +76,12 @@
           </elementProp>
           <elementProp name="hostPort_inventory" elementType="Argument">
             <stringProp name="Argument.name">hostPort_inventory</stringProp>
-            <stringProp name="Argument.value">8091</stringProp>
+            <stringProp name="Argument.value">8061</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="hostPort_container" elementType="Argument">
             <stringProp name="Argument.name">hostPort_container</stringProp>
-            <stringProp name="Argument.value">8091</stringProp>
+            <stringProp name="Argument.value">8071</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
