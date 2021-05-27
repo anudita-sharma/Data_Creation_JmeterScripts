@@ -36,7 +36,7 @@
           </elementProp>
           <elementProp name="station_type" elementType="Argument">
             <stringProp name="Argument.name">station_type</stringProp>
-            <stringProp name="Argument.value">PTL</stringProp>
+            <stringProp name="Argument.value">PLT</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>

@@ -26,17 +26,12 @@
           </elementProp>
           <elementProp name="WorkStationId" elementType="Argument">
             <stringProp name="Argument.name">WorkStationId</stringProp>
-            <stringProp name="Argument.value">Station5</stringProp>
+            <stringProp name="Argument.value">Station4</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="ShortDescription" elementType="Argument">
             <stringProp name="Argument.name">ShortDescription</stringProp>
             <stringProp name="Argument.value">Picking</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="station_type" elementType="Argument">
-            <stringProp name="Argument.name">station_type</stringProp>
-            <stringProp name="Argument.value">PTL</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -91,8 +86,6 @@
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
   &quot;WorkStationId&quot;: &quot;${WorkStationId}&quot;,&#xd;
-    &quot;IsSoftDelete&quot;: false,&#xd;
-  &quot;Process&quot;: null,&#xd;
   &quot;ShortDescription&quot;: &quot;${ShortDescription}&quot;,&#xd;
   &quot;WorkStationLayout&quot;: [&#xd;
     {&#xd;
@@ -102,10 +95,7 @@
         &quot;StationPositionTypeId&quot;: &quot;DonorToteInduct&quot;&#xd;
       }&#xd;
     }&#xd;
-  ],&#xd;
-  &quot;WorkStationType&quot;: {&#xd;
-    &quot;StationTypeId&quot;: &quot;${station_type}&quot;&#xd;
-  }&#xd;
+  ]&#xd;
 }&#xd;
 </stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
@@ -151,7 +141,6 @@
                   <stringProp name="Argument.value">{&#xd;
   &quot;WorkStationId&quot;: &quot;${WorkStationId}&quot;,&#xd;
   &quot;ShortDescription&quot;: &quot;${ShortDescription}&quot;,&#xd;
-  &#xd;
   &quot;WorkStationLayout&quot;: [&#xd;
     {&#xd;
       &quot;LocationAlias&quot;: &quot;${WorkStationId}_DT_${OT_count}&quot;,&#xd;
@@ -160,10 +149,7 @@
         &quot;StationPositionTypeId&quot;: &quot;OrderToteInduct&quot;&#xd;
       }&#xd;
     }&#xd;
-  ],&#xd;
-  &quot;WorkStationType&quot;: {&#xd;
-    &quot;StationTypeId&quot;: &quot;${station_type}&quot;&#xd;
-  }&#xd;
+  ]&#xd;
 }&#xd;
 </stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
@@ -235,10 +221,7 @@
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
   &quot;WorkStationId&quot;: &quot;${WorkStationId}&quot;,&#xd;
-  &quot;ShortDescription&quot;: &quot;${ShortDescription}&quot;,&#xd;
-  &quot;WorkStationType&quot;: {&#xd;
-    &quot;StationTypeId&quot;: &quot;${station_type}&quot;&#xd;
-  },&#xd;
+  &#xd;
   &quot;WorkAssignmentTypeToStation&quot;: [&#xd;
     {&#xd;
       &quot;WorkAssignmentType&quot;: {&#xd;
@@ -316,41 +299,6 @@
           </objProp>
           <stringProp name="filename"></stringProp>
         </ResultCollector>
-        <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Work Station type" enabled="false">
-          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&#xd;
-  &quot;WorkStationId&quot;: &quot;${WorkStationId}&quot;,&#xd;
-  &quot;ShortDescription&quot;: &quot;${ShortDescription}&quot;,&#xd;
-  &quot;IsSoftDelete&quot;: false,&#xd;
-  &quot;Process&quot;: null,&#xd;
-  &quot;WorkStationType&quot;: {&#xd;
-    &quot;StationTypeId&quot;: &quot;${station_type}&quot;&#xd;
-  }&#xd;
-}&#xd;
-</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
-          <stringProp name="HTTPSampler.domain">${ip}</stringProp>
-          <stringProp name="HTTPSampler.port">${port_wa}</stringProp>
-          <stringProp name="HTTPSampler.protocol"></stringProp>
-          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/api/workassignment/workStation/save</stringProp>
-          <stringProp name="HTTPSampler.method">POST</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
-        </HTTPSamplerProxy>
         <hashTree/>
       </hashTree>
       <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">

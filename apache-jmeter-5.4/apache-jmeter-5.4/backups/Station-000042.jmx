@@ -36,7 +36,7 @@
           </elementProp>
           <elementProp name="station_type" elementType="Argument">
             <stringProp name="Argument.name">station_type</stringProp>
-            <stringProp name="Argument.value">PTL</stringProp>
+            <stringProp name="Argument.value">PLT</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -94,6 +94,9 @@
     &quot;IsSoftDelete&quot;: false,&#xd;
   &quot;Process&quot;: null,&#xd;
   &quot;ShortDescription&quot;: &quot;${ShortDescription}&quot;,&#xd;
+  &quot;WorkStationType&quot;: {&#xd;
+    &quot;StationTypeId&quot;: &quot;${station_type}&quot;&#xd;
+  },&#xd;
   &quot;WorkStationLayout&quot;: [&#xd;
     {&#xd;
       &quot;LocationAlias&quot;: &quot;${WorkStationId}_DT_${DT_count}&quot;,&#xd;
@@ -102,10 +105,7 @@
         &quot;StationPositionTypeId&quot;: &quot;DonorToteInduct&quot;&#xd;
       }&#xd;
     }&#xd;
-  ],&#xd;
-  &quot;WorkStationType&quot;: {&#xd;
-    &quot;StationTypeId&quot;: &quot;${station_type}&quot;&#xd;
-  }&#xd;
+  ]&#xd;
 }&#xd;
 </stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
@@ -151,7 +151,9 @@
                   <stringProp name="Argument.value">{&#xd;
   &quot;WorkStationId&quot;: &quot;${WorkStationId}&quot;,&#xd;
   &quot;ShortDescription&quot;: &quot;${ShortDescription}&quot;,&#xd;
-  &#xd;
+  &quot;WorkStationType&quot;: {&#xd;
+    &quot;StationTypeId&quot;: &quot;${station_type}&quot;&#xd;
+  },&#xd;
   &quot;WorkStationLayout&quot;: [&#xd;
     {&#xd;
       &quot;LocationAlias&quot;: &quot;${WorkStationId}_DT_${OT_count}&quot;,&#xd;
@@ -160,10 +162,7 @@
         &quot;StationPositionTypeId&quot;: &quot;OrderToteInduct&quot;&#xd;
       }&#xd;
     }&#xd;
-  ],&#xd;
-  &quot;WorkStationType&quot;: {&#xd;
-    &quot;StationTypeId&quot;: &quot;${station_type}&quot;&#xd;
-  }&#xd;
+  ]&#xd;
 }&#xd;
 </stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
@@ -235,7 +234,6 @@
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
   &quot;WorkStationId&quot;: &quot;${WorkStationId}&quot;,&#xd;
-  &quot;ShortDescription&quot;: &quot;${ShortDescription}&quot;,&#xd;
   &quot;WorkStationType&quot;: {&#xd;
     &quot;StationTypeId&quot;: &quot;${station_type}&quot;&#xd;
   },&#xd;
